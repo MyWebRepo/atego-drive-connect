@@ -7,10 +7,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -37,10 +36,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -78,13 +73,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Mercedes Atego üçün sürücü axtarılır | Almaniya" },
-      { name: "description", content: "Almaniyada şəhərdaxili daşımalar üçün Mercedes-Benz Atego sürücüsü vakansiyası. C1/C/CE sürücülük vəsiqəsi ilə müraciət edin." },
-      { name: "author", content: "Lovable" },
+      {
+        name: "description",
+        content:
+          "Almaniyada şəhərdaxili daşımalar üçün Mercedes-Benz Atego sürücüsü vakansiyası. C1/C/CE sürücülük vəsiqəsi ilə müraciət edin.",
+      },
+      { name: "author", content: "Atego Drive" },
       { property: "og:title", content: "Mercedes Atego üçün sürücü axtarılır | Almaniya" },
-      { property: "og:description", content: "Almaniyada şəhərdaxili daşımalar üçün Mercedes-Benz Atego sürücüsü vakansiyası. C1/C/CE sürücülük vəsiqəsi ilə müraciət edin." },
+      {
+        property: "og:description",
+        content:
+          "Almaniyada şəhərdaxili daşımalar üçün Mercedes-Benz Atego sürücüsü vakansiyası. C1/C/CE sürücülük vəsiqəsi ilə müraciət edin.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {

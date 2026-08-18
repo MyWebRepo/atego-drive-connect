@@ -10,7 +10,7 @@ import {
   Languages,
   Check,
 } from "lucide-react";
-import ategoBg from "../assets/atego-bg.jpg.asset.json";
+import ategoBg from "../assets/atego-bg.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -60,7 +60,7 @@ function Index() {
       {/* Background image with dark overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${ategoBg.url})` }}
+        style={{ backgroundImage: `url(${ategoBg})` }}
       />
       <div className="absolute inset-0 hero-gradient" />
 
